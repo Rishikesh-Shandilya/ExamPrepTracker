@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GATE DA Tracker</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="bg-zinc-950 text-zinc-100 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 py-6">
+      <!-- HEADER -->
+      <header class="flex flex-col md:flex-row justify-between gap-4 mb-8">
+        <div>
+          <h1 class="text-3xl font-bold flex items-center gap-3">
+            <i data-lucide="graduation-cap"></i>
+            GATE DA 2026 Tracker
+          </h1>
+
+          <p class="text-zinc-400 mt-2">Personal Preparation Dashboard</p>
+        </div>
+
+        <div class="flex gap-3 flex-wrap">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search topic..."
+            class="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 outline-none"
+          />
+
+          <button
+            id="themeToggle"
+            class="bg-zinc-900 border border-zinc-800 px-4 py-2 rounded-lg"
+          >
+            Theme
+          </button>
+
+          <button
+            id="exportBtn"
+            class="bg-amber-600 hover:bg-amber-500 px-4 py-2 rounded-lg"
+          >
+            Export
+          </button>
+
+          <button id="loginBtn" class="bg-green-600 px-4 py-2 rounded-lg">
+            Login
+          </button>
+
+          <button id="logoutBtn" class="bg-red-600 px-4 py-2 rounded-lg hidden">
+            Logout
+          </button>
+        </div>
+      </header>
+
+      <!-- DASHBOARD -->
+
+      <section
+        class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-8"
+      >
+        <div class="card">
+          <p class="card-title">Total Topics</p>
+          <h2 id="totalTopics" class="card-value">0</h2>
+        </div>
+
+        <div class="card">
+          <p class="card-title">Lectures</p>
+          <h2 id="lectureDone" class="card-value">0</h2>
+        </div>
+
+        <div class="card">
+          <p class="card-title">Revision</p>
+          <h2 id="revisionDone" class="card-value">0</h2>
+        </div>
+
+        <div class="card">
+          <p class="card-title">PYQ</p>
+          <h2 id="pyqDone" class="card-value">0</h2>
+        </div>
+
+        <div class="card">
+          <p class="card-title">Tests</p>
+          <h2 id="testDone" class="card-value">0</h2>
+        </div>
+
+        <div class="card">
+          <p class="card-title">Progress</p>
+          <h2 id="overallProgress" class="card-value">0%</h2>
+        </div>
+      </section>
+
+      <!-- PROGRESS BAR -->
+
+      <div class="w-full bg-zinc-800 rounded-full h-4 overflow-hidden mb-8">
+        <div
+          id="mainProgressBar"
+          class="bg-amber-500 h-full"
+          style="width: 0%"
+        ></div>
+      </div>
+
+      <!-- SUBJECT PROGRESS -->
+
+      <section class="mb-8">
+        <h2 class="section-title">Subject Progress</h2>
+
+        <div
+          id="subjectProgressContainer"
+          class="grid md:grid-cols-2 gap-4"
+        ></div>
+      </section>
+
+      <!-- TABS -->
+
+      <section class="mb-6">
+        <div id="tabsContainer" class="flex gap-3 overflow-x-auto pb-3"></div>
+      </section>
+
+      <!-- CONTENT -->
+
+      <section id="contentContainer"></section>
+
+      <!-- CHART -->
+
+      <section class="mt-10">
+        <h2 class="section-title">Completion Analytics</h2>
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+          <canvas id="progressChart"></canvas>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

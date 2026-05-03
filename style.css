@@ -1,0 +1,89 @@
+body {
+  transition: 0.3s;
+}
+
+.card {
+  background: rgb(24 24 27);
+  border: 1px solid rgb(39 39 42);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.card-title {
+  color: rgb(161 161 170);
+  font-size: 0.9rem;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  background: rgb(24 24 27);
+  border: 1px solid rgb(39 39 42);
+  padding: 0.7rem 1rem;
+  border-radius: 0.8rem;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  background: rgb(217 119 6);
+}
+
+.subject-card {
+  background: rgb(24 24 27);
+  border: 1px solid rgb(39 39 42);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: rgb(39 39 42);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: rgb(217 119 6);
+}
+
+.topic-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.topic-table th,
+.topic-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgb(39 39 42);
+}
+
+.topic-table th {
+  background: rgb(24 24 27);
+  color: rgb(161 161 170);
+  text-align: left;
+}
+
+.topic-table tr:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.light-mode {
+  background: #f4f4f5;
+  color: #18181b;
+}
