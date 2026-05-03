@@ -1,21 +1,28 @@
 import { DOM_IDS } from "../constants.js";
-import { syllabus } from "../data/syllabus.js";
 import { renderChart } from "./progressChart.js";
-import { progressState } from "../state.js";
+import {
+  getCurrentMockTests,
+  getCurrentProgressState,
+  getCurrentPyqAttempts,
+  getSelectedExam,
+  getSelectedExamTrackingFields,
+  getSelectedSyllabus
+} from "../state.js";
 import { generateId, getRequiredElement } from "../utils.js";
 
 // Updates the summary cards and the main completion progress bar.
 export function updateDashboard() {
   const stats = calculateOverallStats();
-  const progress = stats.total
-    ? Math.round((stats.lecture / stats.total) * 100)
+  const progress = stats.requiredChecks
+    ? Math.round((stats.completedChecks / stats.requiredChecks) * 100)
     : 0;
 
   getRequiredElement(DOM_IDS.totalTopics).innerText = stats.total;
-  getRequiredElement(DOM_IDS.lectureDone).innerText = stats.lecture;
-  getRequiredElement(DOM_IDS.revisionDone).innerText = stats.revision;
-  getRequiredElement(DOM_IDS.pyqDone).innerText = stats.pyq;
-  getRequiredElement(DOM_IDS.testDone).innerText = stats.test;
+  getRequiredElement(DOM_IDS.lectureDone).innerText = stats.lecture || 0;
+  getRequiredElement(DOM_IDS.notesDone).innerText = stats.notes || 0;
+  getRequiredElement(DOM_IDS.revisionDone).innerText = stats.revision || 0;
+  getRequiredElement(DOM_IDS.pyqAttemptsDone).innerText = getCurrentPyqAttempts().length;
+  getRequiredElement(DOM_IDS.mockDone).innerText = getCurrentMockTests().length;
   getRequiredElement(DOM_IDS.overallProgress).innerText = `${progress}%`;
   getRequiredElement(DOM_IDS.mainProgressBar).style.width = `${progress}%`;
 }
@@ -23,6 +30,7 @@ export function updateDashboard() {
 // Renders per-subject progress cards and forwards the same data to Chart.js.
 export function renderSubjectProgress() {
   const container = getRequiredElement(DOM_IDS.subjectProgressContainer);
+  const syllabus = getSelectedSyllabus();
   const progressData = {};
 
   container.innerHTML = "";
@@ -48,28 +56,35 @@ export function renderSubjectProgress() {
 }
 
 function calculateOverallStats() {
+  const selectedExam = getSelectedExam();
+  const syllabus = getSelectedSyllabus();
+  const progressState = getCurrentProgressState();
   const stats = {
-    total: 0,
-    lecture: 0,
-    revision: 0,
-    pyq: 0,
-    test: 0
+    completedChecks: 0,
+    requiredChecks: 0,
+    total: 0
   };
+
+  getSelectedExamTrackingFields().forEach(field => {
+    stats[field.key] = 0;
+  });
 
   Object.keys(syllabus).forEach(subject => {
     Object.keys(syllabus[subject]).forEach(section => {
       syllabus[subject][section].forEach(topic => {
         stats.total++;
 
-        const id = generateId(subject, section, topic);
+        const id = generateId(selectedExam.id, subject, section, topic);
         const topicState = progressState[id];
 
-        if (!topicState) return;
+        getSelectedExamTrackingFields().forEach(field => {
+          stats.requiredChecks++;
 
-        if (topicState.lecture) stats.lecture++;
-        if (topicState.revision) stats.revision++;
-        if (topicState.pyq) stats.pyq++;
-        if (topicState.test) stats.test++;
+          if (topicState?.[field.key]) {
+            stats[field.key]++;
+            stats.completedChecks++;
+          }
+        });
       });
     });
   });
@@ -78,22 +93,30 @@ function calculateOverallStats() {
 }
 
 function calculateSubjectProgress(subject) {
+  const selectedExam = getSelectedExam();
+  const syllabus = getSelectedSyllabus();
+  const progressState = getCurrentProgressState();
   let total = 0;
-  let completed = 0;
+  let completedChecks = 0;
+  let requiredChecks = 0;
 
   Object.keys(syllabus[subject]).forEach(section => {
     syllabus[subject][section].forEach(topic => {
       total++;
 
-      const id = generateId(subject, section, topic);
+      const id = generateId(selectedExam.id, subject, section, topic);
 
-      if (progressState[id]?.lecture) {
-        completed++;
-      }
+      getSelectedExamTrackingFields().forEach(field => {
+        requiredChecks++;
+
+        if (progressState[id]?.[field.key]) {
+          completedChecks++;
+        }
+      });
     });
   });
 
-  return total
-    ? Math.round((completed / total) * 100)
+  return requiredChecks
+    ? Math.round((completedChecks / requiredChecks) * 100)
     : 0;
 }

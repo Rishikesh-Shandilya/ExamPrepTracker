@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GATE DA Tracker</title>
+    <title>Exam Prep Tracker</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -14,39 +14,19 @@
 
   <body class="bg-zinc-950 text-zinc-100 min-h-screen">
     <div class="max-w-7xl mx-auto px-4 py-6">
-      <!-- HEADER -->
       <header class="flex flex-col md:flex-row justify-between gap-4 mb-8">
         <div>
-          <h1 class="text-3xl font-bold flex items-center gap-3">
+          <h1 id="appTitle" class="text-3xl font-bold flex items-center gap-3">
             <i data-lucide="graduation-cap"></i>
-            GATE DA 2026 Tracker
+            <span id="appTitleText">Exam Prep Tracker</span>
           </h1>
 
-          <p class="text-zinc-400 mt-2">Personal Preparation Dashboard</p>
+          <p class="text-zinc-400 mt-2">
+            Plan the syllabus, mocks, PYQs, and daily notes in one preparation workspace.
+          </p>
         </div>
 
-        <div class="flex gap-3 flex-wrap">
-          <input
-            id="searchInput"
-            type="text"
-            placeholder="Search topic..."
-            class="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 outline-none"
-          />
-
-          <button
-            id="themeToggle"
-            class="bg-zinc-900 border border-zinc-800 px-4 py-2 rounded-lg"
-          >
-            Theme
-          </button>
-
-          <button
-            id="exportBtn"
-            class="bg-amber-600 hover:bg-amber-500 px-4 py-2 rounded-lg"
-          >
-            Export
-          </button>
-
+        <div class="flex gap-3">
           <button id="loginBtn" class="bg-green-600 px-4 py-2 rounded-lg">
             Login
           </button>
@@ -57,82 +37,225 @@
         </div>
       </header>
 
-      <!-- DASHBOARD -->
+      <main id="examHome">
+        <section class="home-hero">
+          <div>
+            <p class="text-amber-400 font-semibold mb-3">Prepare with a system, not scattered notes.</p>
+            <h2 class="text-4xl font-bold mb-4">Your complete exam preparation workspace.</h2>
+            <p class="text-zinc-300 max-w-2xl">
+              Start with a verified syllabus when available, or create a personal tracker
+              Track preloaded syllabus topics, add your own focus areas, review mocks,
+              log PYQs, and keep preparation notes without switching tools.
+            </p>
+          </div>
 
-      <section
-        class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-8"
-      >
-        <div class="card">
-          <p class="card-title">Total Topics</p>
-          <h2 id="totalTopics" class="card-value">0</h2>
+          <div class="home-quote">
+            <p>Clarity compounds when every study session has a place to land.</p>
+            <span>Choose a tracker, record the work, review the gaps.</span>
+          </div>
+        </section>
+
+        <section class="home-grid">
+          <div>
+            <h2 class="section-title">Available Trackers</h2>
+            <section
+              id="examCardsContainer"
+              class="grid md:grid-cols-2 gap-4"
+            ></section>
+          </div>
+
+          <aside class="builder-panel">
+            <h2 class="section-title">Create Personal Tracker</h2>
+            <form id="customExamForm" class="stack-form">
+              <label>
+                Tracker name
+                <input
+                  id="customExamName"
+                  type="text"
+                  placeholder="Exam name and year"
+                  required
+                />
+              </label>
+
+              <label>
+                Category
+                <input
+                  id="customExamCategory"
+                  type="text"
+                  placeholder="Personal, University, Certification"
+                />
+              </label>
+
+              <button type="submit" class="primary-btn">Create Tracker</button>
+              <p id="customExamMessage" class="form-message"></p>
+            </form>
+          </aside>
+        </section>
+      </main>
+
+      <main id="trackerView" class="hidden">
+        <header
+          id="trackerHeader"
+          class="flex flex-col md:flex-row justify-between gap-4 mb-8"
+        >
+          <div>
+            <h2 id="trackerTitle" class="text-2xl font-bold">Tracker</h2>
+            <p id="trackerSubtitle" class="text-zinc-400 mt-1"></p>
+          </div>
+
+          <div class="flex gap-3 flex-wrap">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search topic..."
+              class="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 outline-none"
+            />
+
+            <button
+              id="changeExamBtn"
+              class="bg-zinc-900 border border-zinc-800 px-4 py-2 rounded-lg"
+            >
+              Change Exam
+            </button>
+          </div>
+        </header>
+
+        <section
+          class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-7 gap-4 mb-8"
+        >
+          <div class="card">
+            <p class="card-title">Total Topics</p>
+            <h2 id="totalTopics" class="card-value">0</h2>
+          </div>
+
+          <div class="card">
+            <p class="card-title">Lectures</p>
+            <h2 id="lectureDone" class="card-value">0</h2>
+          </div>
+
+          <div class="card">
+            <p class="card-title">Notes</p>
+            <h2 id="notesDone" class="card-value">0</h2>
+          </div>
+
+          <div class="card">
+            <p class="card-title">Revision</p>
+            <h2 id="revisionDone" class="card-value">0</h2>
+          </div>
+
+          <div class="card">
+            <p class="card-title">PYQs</p>
+            <h2 id="pyqAttemptsDone" class="card-value">0</h2>
+          </div>
+
+          <div class="card">
+            <p class="card-title">Mocks</p>
+            <h2 id="mockDone" class="card-value">0</h2>
+          </div>
+
+          <div class="card">
+            <p class="card-title">Progress</p>
+            <h2 id="overallProgress" class="card-value">0%</h2>
+          </div>
+        </section>
+
+        <div class="w-full bg-zinc-800 rounded-full h-4 overflow-hidden mb-8">
+          <div
+            id="mainProgressBar"
+            class="bg-amber-500 h-full"
+            style="width: 0%"
+          ></div>
         </div>
 
-        <div class="card">
-          <p class="card-title">Lectures</p>
-          <h2 id="lectureDone" class="card-value">0</h2>
-        </div>
+        <nav id="prepNav" class="workspace-nav">
+          <button class="active" type="button" data-workspace="syllabus">Syllabus</button>
+          <button type="button" data-workspace="mocks">Mock Tests</button>
+          <button type="button" data-workspace="pyqs">PYQs</button>
+          <button type="button" data-workspace="diary">Diary</button>
+        </nav>
 
-        <div class="card">
-          <p class="card-title">Revision</p>
-          <h2 id="revisionDone" class="card-value">0</h2>
-        </div>
+        <section data-panel="syllabus">
+          <section class="mb-8">
+            <h2 class="section-title">Subject Progress</h2>
 
-        <div class="card">
-          <p class="card-title">PYQ</p>
-          <h2 id="pyqDone" class="card-value">0</h2>
-        </div>
+            <div
+              id="subjectProgressContainer"
+              class="grid md:grid-cols-2 gap-4"
+            ></div>
+          </section>
 
-        <div class="card">
-          <p class="card-title">Tests</p>
-          <h2 id="testDone" class="card-value">0</h2>
-        </div>
+          <section class="mb-6">
+            <div id="tabsContainer" class="flex gap-3 overflow-x-auto pb-3"></div>
+          </section>
 
-        <div class="card">
-          <p class="card-title">Progress</p>
-          <h2 id="overallProgress" class="card-value">0%</h2>
-        </div>
-      </section>
+          <section class="builder-panel mb-6">
+            <h2 class="section-title">Add Personal Topic</h2>
+            <form id="customTopicForm" class="entry-form topic-entry-form">
+              <input id="customTopicSubject" type="text" placeholder="Subject" required />
+              <input id="customTopicSection" type="text" placeholder="Section" required />
+              <input id="customTopicName" type="text" placeholder="Topic" required />
+              <button type="submit" class="primary-btn">Add Topic</button>
+            </form>
+            <p id="customTopicMessage" class="form-message"></p>
+          </section>
 
-      <!-- PROGRESS BAR -->
+          <section id="contentContainer"></section>
 
-      <div class="w-full bg-zinc-800 rounded-full h-4 overflow-hidden mb-8">
-        <div
-          id="mainProgressBar"
-          class="bg-amber-500 h-full"
-          style="width: 0%"
-        ></div>
-      </div>
+          <section class="mt-10">
+            <h2 class="section-title">Completion Analytics</h2>
 
-      <!-- SUBJECT PROGRESS -->
+            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
+              <canvas id="progressChart"></canvas>
+            </div>
+          </section>
+        </section>
 
-      <section class="mb-8">
-        <h2 class="section-title">Subject Progress</h2>
+        <section data-panel="mocks" class="hidden">
+          <h2 class="section-title">Mock Tests</h2>
+          <form id="mockForm" class="entry-form">
+            <input id="mockName" type="text" placeholder="Mock name" required />
+            <input id="mockDate" type="date" required />
+            <input id="mockScore" type="number" min="0" step="0.01" placeholder="Score" required />
+            <input id="mockTotal" type="number" min="1" step="0.01" placeholder="Total" required />
+            <input id="mockNotes" type="text" placeholder="Analysis notes" />
+            <button type="submit" class="primary-btn">Add Mock</button>
+          </form>
+          <div id="mockContainer" class="entry-list"></div>
+        </section>
 
-        <div
-          id="subjectProgressContainer"
-          class="grid md:grid-cols-2 gap-4"
-        ></div>
-      </section>
+        <section data-panel="pyqs" class="hidden">
+          <h2 class="section-title">PYQ Practice</h2>
+          <form id="pyqForm" class="entry-form">
+            <input id="pyqName" type="text" placeholder="Paper or set name" required />
+            <input id="pyqYear" type="number" min="1950" max="2100" placeholder="Year" required />
+            <input id="pyqScore" type="text" placeholder="Score or status" />
+            <input id="pyqNotes" type="text" placeholder="Mistakes or revision notes" />
+            <button type="submit" class="primary-btn">Add PYQ</button>
+          </form>
+          <div id="pyqContainer" class="entry-list"></div>
+        </section>
 
-      <!-- TABS -->
-
-      <section class="mb-6">
-        <div id="tabsContainer" class="flex gap-3 overflow-x-auto pb-3"></div>
-      </section>
-
-      <!-- CONTENT -->
-
-      <section id="contentContainer"></section>
-
-      <!-- CHART -->
-
-      <section class="mt-10">
-        <h2 class="section-title">Completion Analytics</h2>
-
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
-          <canvas id="progressChart"></canvas>
-        </div>
-      </section>
+        <section data-panel="diary" class="hidden">
+          <h2 class="section-title">Preparation Diary</h2>
+          <form id="diaryForm" class="diary-form">
+            <select id="diaryMood">
+              <option value="Focused">Focused</option>
+              <option value="Steady">Steady</option>
+              <option value="Tired">Tired</option>
+              <option value="Stuck">Stuck</option>
+              <option value="Confident">Confident</option>
+            </select>
+            <textarea
+              id="diaryText"
+              rows="4"
+              placeholder="Dump thoughts, doubts, blockers, revision ideas, or tomorrow's priority..."
+              required
+            ></textarea>
+            <button type="submit" class="primary-btn">Save Entry</button>
+          </form>
+          <div id="diaryContainer" class="entry-list"></div>
+        </section>
+      </main>
     </div>
 
     <script type="module" src="src/app.js"></script>

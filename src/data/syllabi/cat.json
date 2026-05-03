@@ -1,0 +1,60 @@
+{
+  "Verbal Ability and Reading Comprehension": {
+    "Reading Comprehension": [
+      "Reading Comprehension Passages",
+      "Main Idea",
+      "Inference",
+      "Tone",
+      "Author's Purpose"
+    ],
+    "Verbal Ability": [
+      "Para Jumbles",
+      "Para Summary",
+      "Odd Sentence Out",
+      "Sentence Completion",
+      "Critical Reasoning"
+    ]
+  },
+  "Data Interpretation and Logical Reasoning": {
+    "Data Interpretation": [
+      "Tables",
+      "Bar Graphs",
+      "Line Graphs",
+      "Pie Charts",
+      "Caselets",
+      "Venn Diagrams"
+    ],
+    "Logical Reasoning": [
+      "Arrangements",
+      "Games and Tournaments",
+      "Routes and Networks",
+      "Selection",
+      "Binary Logic",
+      "Puzzles"
+    ]
+  },
+  "Quantitative Aptitude": {
+    "Arithmetic": [
+      "Percentages",
+      "Profit and Loss",
+      "Simple and Compound Interest",
+      "Ratio and Proportion",
+      "Time and Work",
+      "Time Speed Distance",
+      "Averages",
+      "Mixtures and Alligation"
+    ],
+    "Algebra, Geometry and Modern Math": [
+      "Linear Equations",
+      "Quadratic Equations",
+      "Inequalities",
+      "Functions",
+      "Triangles",
+      "Circles",
+      "Mensuration",
+      "Number System",
+      "Permutations and Combinations",
+      "Probability"
+    ]
+  }
+}

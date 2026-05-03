@@ -1,6 +1,12 @@
-import { DOM_IDS, TRACKING_FIELDS } from "../constants.js";
-import { syllabus } from "../data/syllabus.js";
-import { getCurrentSubject, ensureTopicState, progressState } from "../state.js";
+import { DOM_IDS } from "../constants.js";
+import {
+  ensureTopicState,
+  getCurrentProgressState,
+  getCurrentSubject,
+  getSelectedExam,
+  getSelectedExamTrackingFields,
+  getSelectedSyllabus
+} from "../state.js";
 import { escapeHtml, generateId, getRequiredElement } from "../utils.js";
 
 let tableEventsReady = false;
@@ -8,8 +14,11 @@ let tableEventsReady = false;
 // Builds the active subject's topic table from the syllabus data.
 export function renderContent() {
   const container = getRequiredElement(DOM_IDS.contentContainer);
+  const selectedExam = getSelectedExam();
+  const syllabus = getSelectedSyllabus();
   const currentSubject = getCurrentSubject();
-  const sections = syllabus[currentSubject];
+  const sections = syllabus[currentSubject] || {};
+  const progressState = getCurrentProgressState();
 
   let html = `
     <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-auto">
@@ -17,12 +26,7 @@ export function renderContent() {
         <thead>
           <tr>
             <th>Topic</th>
-            <th>Lecture</th>
-            <th>Notes</th>
-            <th>Revision</th>
-            <th>PYQ</th>
-            <th>Test</th>
-            <th>Weak</th>
+            ${renderTrackingHeaders()}
             <th>Remarks</th>
           </tr>
         </thead>
@@ -32,14 +36,14 @@ export function renderContent() {
   Object.keys(sections).forEach(section => {
     html += `
       <tr>
-        <td colspan="8" class="bg-zinc-800 text-amber-400 font-semibold">
+        <td colspan="${getSelectedExamTrackingFields().length + 2}" class="bg-zinc-800 text-amber-400 font-semibold">
           ${escapeHtml(section)}
         </td>
       </tr>
     `;
 
     sections[section].forEach(topic => {
-      const id = generateId(currentSubject, section, topic);
+      const id = generateId(selectedExam.id, currentSubject, section, topic);
       ensureTopicState(id);
 
       html += `
@@ -104,18 +108,26 @@ export function setupTopicTableEvents({ onFieldChange, onRemarksChange }) {
 }
 
 function renderTrackingCells(id) {
-  return TRACKING_FIELDS
+  const progressState = getCurrentProgressState();
+
+  return getSelectedExamTrackingFields()
     .map(field => {
       return `
         <td>
           <input
             type="checkbox"
             data-topic-id="${id}"
-            data-field="${field}"
-            ${progressState[id][field] ? "checked" : ""}
+            data-field="${field.key}"
+            ${progressState[id][field.key] ? "checked" : ""}
           >
         </td>
       `;
     })
+    .join("");
+}
+
+function renderTrackingHeaders() {
+  return getSelectedExamTrackingFields()
+    .map(field => `<th>${escapeHtml(field.label)}</th>`)
     .join("");
 }

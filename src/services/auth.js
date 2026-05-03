@@ -48,6 +48,7 @@ export function setupFirebaseAuth({ onAuthenticated, onLoggedOut }) {
       setCurrentUser(user);
       loginBtn.classList.add("hidden");
       logoutBtn.classList.remove("hidden");
+      logoutBtn.classList.add("inline-flex");
 
       onAuthenticated?.();
       return;
@@ -56,5 +57,6 @@ export function setupFirebaseAuth({ onAuthenticated, onLoggedOut }) {
     setCurrentUser(null);
     loginBtn.classList.remove("hidden");
     logoutBtn.classList.add("hidden");
+    logoutBtn.classList.remove("inline-flex");
   });
 }

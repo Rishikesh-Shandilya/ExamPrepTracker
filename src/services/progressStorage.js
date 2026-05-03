@@ -1,6 +1,8 @@
 import { CACHE_KEY } from "../constants.js";
 import { firebaseServices } from "../config/firebase.js";
 
+const LEGACY_CACHE_KEY = "gate_da_tracker_cache";
+
 // Saves progress locally first, then syncs to Firestore when a user is signed in.
 export async function saveProgress({ user, state }) {
   saveCachedProgress(state);
@@ -85,7 +87,12 @@ export async function loadProgress({ user }) {
 
 export function loadCachedProgress() {
   try {
-    return JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
+    const storedData =
+      localStorage.getItem(CACHE_KEY)
+      || localStorage.getItem(LEGACY_CACHE_KEY)
+      || "{}";
+
+    return JSON.parse(storedData);
   }
   catch(error) {
     console.error("Local Cache Parse Error:", error);
@@ -105,4 +112,5 @@ export function saveCachedProgress(state) {
 
 export function clearCachedProgress() {
   localStorage.removeItem(CACHE_KEY);
+  localStorage.removeItem(LEGACY_CACHE_KEY);
 }

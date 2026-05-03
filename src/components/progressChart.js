@@ -5,14 +5,14 @@ let progressChart;
 
 // Owns the Chart.js instance so dashboards can re-render without leaking charts.
 export function renderChart(subjectProgress) {
-  const ctx = getRequiredElement(DOM_IDS.progressChart);
-  const labels = Object.keys(subjectProgress);
-  const values = Object.values(subjectProgress);
-
   if (!window.Chart) {
     console.warn("Chart.js is unavailable; skipping chart render.");
     return;
   }
+
+  const ctx = getRequiredElement(DOM_IDS.progressChart);
+  const labels = Object.keys(subjectProgress);
+  const values = Object.values(subjectProgress);
 
   if (progressChart) {
     progressChart.destroy();

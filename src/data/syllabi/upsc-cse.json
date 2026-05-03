@@ -1,0 +1,39 @@
+{
+  "Preliminary Examination": {
+    "General Studies Paper I": [
+      "Current Events",
+      "History of India",
+      "Indian National Movement",
+      "Indian and World Geography",
+      "Indian Polity and Governance",
+      "Economic and Social Development",
+      "Environment and Ecology",
+      "General Science"
+    ],
+    "General Studies Paper II": [
+      "Comprehension",
+      "Interpersonal Skills",
+      "Logical Reasoning",
+      "Analytical Ability",
+      "Decision Making",
+      "General Mental Ability",
+      "Basic Numeracy",
+      "Data Interpretation"
+    ]
+  },
+  "Main Examination": {
+    "Qualifying Papers": [
+      "Indian Language",
+      "English"
+    ],
+    "Merit Papers": [
+      "Essay",
+      "General Studies I",
+      "General Studies II",
+      "General Studies III",
+      "General Studies IV",
+      "Optional Subject Paper I",
+      "Optional Subject Paper II"
+    ]
+  }
+}

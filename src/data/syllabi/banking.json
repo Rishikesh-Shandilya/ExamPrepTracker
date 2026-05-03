@@ -1,0 +1,42 @@
+{
+  "Preliminary Examination": {
+    "Core Sections": [
+      "English Language",
+      "Quantitative Aptitude",
+      "Reasoning Ability"
+    ],
+    "Quantitative Aptitude": [
+      "Simplification",
+      "Approximation",
+      "Number Series",
+      "Quadratic Equations",
+      "Data Interpretation",
+      "Arithmetic Word Problems"
+    ],
+    "Reasoning Ability": [
+      "Puzzles",
+      "Seating Arrangement",
+      "Syllogism",
+      "Inequality",
+      "Coding and Decoding",
+      "Blood Relations",
+      "Direction Sense"
+    ]
+  },
+  "Main Examination": {
+    "Core Sections": [
+      "Reasoning and Computer Aptitude",
+      "Data Analysis and Interpretation",
+      "General Economy and Banking Awareness",
+      "English Language"
+    ],
+    "Banking Awareness": [
+      "Banking System",
+      "RBI",
+      "Monetary Policy",
+      "Financial Awareness",
+      "Current Affairs",
+      "Government Schemes"
+    ]
+  }
+}

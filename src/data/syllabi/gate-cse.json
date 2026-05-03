@@ -1,0 +1,68 @@
+{
+  "Engineering Mathematics": {
+    "Discrete Mathematics": [
+      "Propositional Logic",
+      "First Order Logic",
+      "Sets",
+      "Relations",
+      "Functions",
+      "Partial Orders",
+      "Lattices",
+      "Groups",
+      "Graphs",
+      "Combinatorics"
+    ],
+    "Linear Algebra": [
+      "Matrices",
+      "Determinants",
+      "System of Linear Equations",
+      "Eigenvalues",
+      "Eigenvectors",
+      "LU Decomposition"
+    ],
+    "Calculus and Probability": [
+      "Limits",
+      "Continuity",
+      "Differentiability",
+      "Maxima and Minima",
+      "Mean",
+      "Median",
+      "Mode",
+      "Standard Deviation",
+      "Random Variables",
+      "Probability Distributions"
+    ]
+  },
+  "Computer Science": {
+    "Programming and Data Structures": [
+      "C Programming",
+      "Recursion",
+      "Arrays",
+      "Stacks",
+      "Queues",
+      "Linked Lists",
+      "Trees",
+      "Binary Search Trees",
+      "Heaps",
+      "Graphs"
+    ],
+    "Algorithms": [
+      "Asymptotic Analysis",
+      "Searching",
+      "Sorting",
+      "Greedy Algorithms",
+      "Divide and Conquer",
+      "Dynamic Programming",
+      "Graph Algorithms"
+    ],
+    "Core Subjects": [
+      "Digital Logic",
+      "Computer Organization",
+      "Operating Systems",
+      "Databases",
+      "Computer Networks",
+      "Compiler Design",
+      "Theory of Computation"
+    ]
+  }
+}

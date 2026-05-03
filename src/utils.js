@@ -1,7 +1,8 @@
-// Builds stable storage keys from syllabus labels.
-export function generateId(subject, section, topic) {
-  return `${subject}_${section}_${topic}`
+// Builds stable progress keys from exam and syllabus labels.
+export function generateId(examId, subject, section, topic) {
+  return `${examId}_${subject}_${section}_${topic}`
     .replace(/\s+/g, "_")
+    .replace(/[^\w-]+/g, "_")
     .toLowerCase();
 }
 
@@ -24,6 +25,23 @@ export function debounce(callback, delay = 300) {
       callback(...args);
     }, delay);
   };
+}
+
+export function slugify(value) {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
+export function createId(prefix = "item") {
+  if (window.crypto?.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+
+  return `${prefix}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 }
 
 // Keeps user-entered remarks safe when inserted into HTML strings.

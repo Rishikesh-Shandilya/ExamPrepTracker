@@ -1,7 +1,5 @@
-export const syllabus = {
-
+{
   "Probability & Statistics": {
-
     "Probability Basics": [
       "Counting (Permutation and Combination)",
       "Probability Axioms",
@@ -14,7 +12,6 @@ export const syllabus = {
       "Joint Probability",
       "Bayes Theorem"
     ],
-
     "Statistics Fundamentals": [
       "Conditional Expectation",
       "Conditional Variance",
@@ -25,7 +22,6 @@ export const syllabus = {
       "Correlation",
       "Covariance"
     ],
-
     "Random Variables": [
       "Random Variables",
       "Discrete Random Variables",
@@ -35,7 +31,6 @@ export const syllabus = {
       "Cumulative Distribution Function (CDF)",
       "Conditional PDF"
     ],
-
     "Probability Distributions": [
       "Uniform Distribution",
       "Bernoulli Distribution",
@@ -47,7 +42,6 @@ export const syllabus = {
       "t-Distribution",
       "Chi-Squared Distribution"
     ],
-
     "Statistical Inference": [
       "Central Limit Theorem",
       "Confidence Interval",
@@ -56,18 +50,13 @@ export const syllabus = {
       "Chi-Squared Test"
     ]
   },
-
-
-
   "Linear Algebra": {
-
     "Vector Spaces": [
       "Vector Space",
       "Subspaces",
       "Linear Dependence of Vectors",
       "Linear Independence of Vectors"
     ],
-
     "Matrices": [
       "Matrices",
       "Projection Matrix",
@@ -77,13 +66,11 @@ export const syllabus = {
       "Properties of Partition Matrix",
       "Quadratic Forms"
     ],
-
     "Linear Equations": [
       "Systems of Linear Equations",
       "Solutions of Linear Equations",
       "Gaussian Elimination"
     ],
-
     "Matrix Properties": [
       "Eigenvalues",
       "Eigenvectors",
@@ -92,17 +79,12 @@ export const syllabus = {
       "Nullity",
       "Projections"
     ],
-
     "Matrix Decomposition": [
       "LU Decomposition",
       "Singular Value Decomposition (SVD)"
     ]
   },
-
-
-
   "Calculus & Optimization": {
-
     "Calculus": [
       "Functions of Single Variable",
       "Limits",
@@ -110,22 +92,16 @@ export const syllabus = {
       "Differentiability",
       "Taylor Series"
     ],
-
     "Optimization": [
       "Maxima",
       "Minima",
       "Optimization Involving Single Variable"
     ]
   },
-
-
-
   "Programming, Data Structures & Algorithms": {
-
     "Programming": [
       "Programming in Python"
     ],
-
     "Data Structures": [
       "Stacks",
       "Queues",
@@ -133,37 +109,28 @@ export const syllabus = {
       "Trees",
       "Hash Tables"
     ],
-
     "Searching Algorithms": [
       "Linear Search",
       "Binary Search"
     ],
-
     "Sorting Algorithms": [
       "Selection Sort",
       "Bubble Sort",
       "Insertion Sort"
     ],
-
     "Divide and Conquer": [
       "Merge Sort",
       "Quick Sort"
     ],
-
     "Graph Theory": [
       "Introduction to Graph Theory"
     ],
-
     "Graph Algorithms": [
       "Graph Traversals",
       "Shortest Path Algorithms"
     ]
   },
-
-
-
   "Database Management & Warehousing": {
-
     "Database Management": [
       "ER Model",
       "Relational Model",
@@ -176,30 +143,23 @@ export const syllabus = {
       "Indexing",
       "Data Types"
     ],
-
     "Data Transformation": [
       "Normalization",
       "Discretization",
       "Sampling",
       "Compression"
     ],
-
     "Data Warehousing": [
       "Data Warehouse Modelling",
       "Schema for Multidimensional Data Models",
       "Concept Hierarchies"
     ],
-
     "Measures": [
       "Measures Categorization",
       "Measures Computation"
     ]
   },
-
-
-
   "Machine Learning": {
-
     "Supervised Learning": [
       "Regression Problems",
       "Classification Problems",
@@ -214,17 +174,14 @@ export const syllabus = {
       "Decision Trees",
       "Bias Variance Trade-Off"
     ],
-
     "Cross Validation": [
       "Leave-One-Out (LOO) Cross Validation",
       "k-Fold Cross Validation"
     ],
-
     "Neural Networks": [
       "Multi-Layer Perceptron",
       "Feed-Forward Neural Network"
     ],
-
     "Unsupervised Learning": [
       "Clustering Algorithms",
       "k-Means",
@@ -238,27 +195,20 @@ export const syllabus = {
       "Principal Component Analysis (PCA)"
     ]
   },
-
-
-
   "Artificial Intelligence": {
-
     "Search Algorithms": [
       "Informed Search",
       "Uninformed Search",
       "Adversarial Search"
     ],
-
     "Logic": [
       "Propositional Logic",
       "Predicate Logic"
     ],
-
     "Reasoning Under Uncertainty": [
       "Conditional Independence Representation",
       "Exact Inference through Variable Elimination",
       "Approximate Inference through Sampling"
     ]
   }
-
-};
+}

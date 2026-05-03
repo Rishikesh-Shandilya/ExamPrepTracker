@@ -1,0 +1,53 @@
+{
+  "Tier I": {
+    "General Intelligence and Reasoning": [
+      "Analogies",
+      "Classification",
+      "Series",
+      "Coding and Decoding",
+      "Blood Relations",
+      "Direction Sense",
+      "Venn Diagrams",
+      "Syllogism",
+      "Non-Verbal Reasoning"
+    ],
+    "General Awareness": [
+      "History",
+      "Geography",
+      "Polity",
+      "Economy",
+      "Static GK",
+      "Science",
+      "Current Affairs"
+    ],
+    "Quantitative Aptitude": [
+      "Number System",
+      "Simplification",
+      "Percentage",
+      "Ratio and Proportion",
+      "Profit and Loss",
+      "Time and Work",
+      "Time Speed Distance",
+      "Geometry",
+      "Mensuration",
+      "Data Interpretation"
+    ],
+    "English Comprehension": [
+      "Vocabulary",
+      "Grammar",
+      "Reading Comprehension",
+      "Error Spotting",
+      "Cloze Test",
+      "Sentence Improvement"
+    ]
+  },
+  "Tier II": {
+    "Paper I": [
+      "Mathematical Abilities",
+      "Reasoning and General Intelligence",
+      "English Language and Comprehension",
+      "General Awareness",
+      "Computer Knowledge"
+    ]
+  }
+}
